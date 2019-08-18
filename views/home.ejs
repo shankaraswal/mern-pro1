@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Site</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body class="blue-grey darken-7">
+    <div class="container">
+        <% include partials/nav %>
+        <div class="row">
+            <form class="col s12" id="myForm">
+                <div class="row col s11">
+                    <div class="input-field col s4">
+                        <input id="icon_prefix" type="text" name="fname" class="validate">
+                        <label for="icon_prefix">First Name</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="icon_prefix" type="text" name="lname" class="validate">
+                        <label for="icon_prefix">Last Name</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="icon_prefix" type="text" name="hobby" class="validate">
+                        <label for="icon_prefix">I Like</label>
+                    </div>
+                </div>
+                <div class="input-field col s1">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Add
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            <% mylist.forEach(item=>{ 
+            if(item){%>
+            <div class="col s12 m4" id='<%= item._id %>' >
+                <div class="card blue-grey darken-2">
+                    <div class="card-content white-text">
+                        <h5 ><%= item.fname %> <%= item.lname %></h5>
+                        <p>I like <%= item.hobby %>.</p>
+                         <p>Collections allow you to group list objects together.</p>
+                    </div>
+                    <div class="card-action">
+                        <a class="link waves-effect waves-dark">Update Item</a>
+                        <a onclick="deleteMe('<%= item.id %>')" class="link waves-effect waves-dark">Delete Item</a>
+                    </div>
+                </div>
+            </div>
+            <%  }   
+            })   %>
+        </div>
+
+    </div>
+
+    <script src="/js.js"></script>
+
+</body>
+
+</html>
