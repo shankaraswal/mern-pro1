@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false);
-const {mongourl} =require('./config/keys')
+const {mongourl} =require('./env_config/keys')
 const Wish = require('./models/wish');
 mongoose.connect(mongourl, {useNewUrlParser:true});
 
